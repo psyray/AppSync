@@ -2,7 +2,7 @@
 #include <dispatch/dispatch.h>
 #include <mach/boolean.h>
 #include <mach/mach.h>
-#include <rootless.h>
+#include <roothide.h>
 #include <spawn.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -21,9 +21,9 @@ extern char ***_NSGetEnviron(void);
 extern int proc_listallpids(void *, int);
 extern int proc_pidpath(int, void *, uint32_t);
 
-static const char *cynject_path;
-static const char *inject_criticald_path;
-static const char *dylib_path;
+#define cynject_path  jbroot("/usr/bin/cynject")
+#define inject_criticald_path  jbroot("/electra/inject_criticald")
+#define dylib_path  jbroot("/Library/MobileSubstrate/DynamicLibraries/AppSyncUnified-installd.dylib")
 static const char *dispatch_queue_name = NULL;
 static const char *process_name = "installd";
 static int process_buffer_size = 4096;
